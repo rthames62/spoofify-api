@@ -10,6 +10,9 @@ spotifyController.authorizeSpotify();
 // console.log(process.env);
 
 app.get('/api/spotify/categories', spotifyController.getCategories);
+app.get('/api/spotify/browse/categories', spotifyController.getBrowseCategories);
+app.get('/api/spotify/browse/featured-playlists', spotifyController.getBrowseFeaturedPlaylists);
+app.get('/api/spotify/browse/new-releases', spotifyController.getBrowseFeaturedPlaylists);
 app.get('/api/spotify/featured-playlists', spotifyController.getFeaturedPlaylists);
 app.get('/api/spotify/recommendations', spotifyController.getRecommendations);
 app.get('/api/spotify/playlist/:id', spotifyController.getPlaylistById);

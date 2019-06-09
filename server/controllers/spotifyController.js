@@ -148,9 +148,37 @@ const getArtistRelatedArtists = (req, res) => {
 }
 
 const searchSpotify = (req, res) => {
-    console.log(req.params);
     request.get(`${baseUri}/search?q=${req.params.q}*&type=album,artist,playlist,track&market=us&limit=20&best_match=true`, authHeaders, (err, response, body) => {
-        console.log(err);
+        if(!err && response.statusCode === 200) {
+            res.json(body);
+        } else {
+            res.json(response, body, err);
+        }
+    })
+}
+
+const getBrowseCategories = (req, res) => {
+    request.get(`${baseUri}/browse/categories`, authHeaders, (err, response, body) => {
+        if(!err && response.statusCode === 200) {
+            res.json(body);
+        } else {
+            res.json(response, body, err);
+        }
+    })
+}
+
+const getBrowseFeaturedPlaylists = (req, res) => {
+    request.get(`${baseUri}/browse/featured-playlists`, authHeaders, (err, response, body) => {
+        if(!err && response.statusCode === 200) {
+            res.json(body);
+        } else {
+            res.json(response, body, err);
+        }
+    })
+}
+
+const getBrowseNewReleases = (req, res) => {
+    request.get(`${baseUri}/browse/new-releases`, authHeaders, (err, response, body) => {
         if(!err && response.statusCode === 200) {
             res.json(body);
         } else {
@@ -173,5 +201,8 @@ module.exports = {
     getArtistAppearsOn: getArtistAppearsOn,
     getAlbumById: getAlbumById,
     getArtistRelatedArtists: getArtistRelatedArtists,
-    searchSpotify: searchSpotify
+    searchSpotify: searchSpotify,
+    getBrowseCategories: getBrowseCategories,
+    getBrowseFeaturedPlaylists: getBrowseFeaturedPlaylists,
+    getBrowseNewReleases: getBrowseNewReleases
 }
