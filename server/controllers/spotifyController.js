@@ -2,9 +2,6 @@
 const request = require('request');
 const baseUri = 'https://api.spotify.com/v1';
 
-console.log(process.env.clientid);
-console.log(process.env.clientkey);
-
 const authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     headers: {
@@ -151,6 +148,7 @@ const getArtistRelatedArtists = (req, res) => {
 }
 
 const searchSpotify = (req, res) => {
+    console.log(req.params);
     request.get(`${baseUri}/search?q=${req.params.q}*&type=album,artist,playlist,track&market=us&limit=20&best_match=true`, authHeaders, (err, response, body) => {
         if(!err && response.statusCode === 200) {
             res.json(body);
