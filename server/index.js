@@ -7,7 +7,7 @@ const spotifyController = require('./controllers/spotifyController');
 app.use(cors());
 spotifyController.authorizeSpotify();
 
-console.log(process.env);
+// console.log(process.env);
 
 app.get('/api/spotify/categories', spotifyController.getCategories);
 app.get('/api/spotify/featured-playlists', spotifyController.getFeaturedPlaylists);
