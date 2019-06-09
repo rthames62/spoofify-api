@@ -150,6 +150,7 @@ const getArtistRelatedArtists = (req, res) => {
 const searchSpotify = (req, res) => {
     console.log(req.params);
     request.get(`${baseUri}/search?q=${req.params.q}*&type=album,artist,playlist,track&market=us&limit=20&best_match=true`, authHeaders, (err, response, body) => {
+        console.log(err);
         if(!err && response.statusCode === 200) {
             res.json(body);
         } else {
