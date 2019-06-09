@@ -154,7 +154,7 @@ const searchSpotify = (req, res) => {
         if(!err && response.statusCode === 200) {
             res.json(body);
         } else {
-            res.json(response);
+            res.json(response, body, err);
         }
     })
 }
