@@ -171,7 +171,7 @@ const getBrowseCategoryById = (req, res) => {
     request.get(`${baseUri}/browse/categories/${req.params.id}/playlists?country=us&limit=20`, authHeaders, (err, response, body) => {
         console.log(response.statusCode, err);
         if(!err && response.statusCode === 200) {
-            console.log('success');
+            console.log('success', body);
             res.json(body);
         } else {
             console.log('arghh')
