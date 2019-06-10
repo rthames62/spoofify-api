@@ -168,7 +168,7 @@ const getBrowseCategories = (req, res) => {
 }
 
 const getBrowseCategoryById = (req, res) => {
-    request.get(`${baseUri}/browse/categories/${req.params.id}/playlists?country=us&limit=20`, authHeaders, (err, response, body) => {
+    request.get(`${baseUri}/views/${req.params.id}-page?timestamp=2019-06-10T03%3A06%3A18.039Z&platform=web&content_limit=12&limit=10&types=album%2Cplaylist%2Cartist%2Cshow%2Cstation&image_style=gradient_overlay&country=US&market=from_token&locale=en`, authHeaders, (err, response, body) => {
         if(!err && response.statusCode === 200) {
             res.json(body);
         } else {
