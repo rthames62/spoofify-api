@@ -169,7 +169,7 @@ const getBrowseCategories = (req, res) => {
 
 const getBrowseCategoryById = (req, res) => {
     console.log(`${baseUri}/browse/categories/${req.params.id}/playlists`);
-    request.get(`${baseUri}/browse/categories/${req.params.id}/playlists`, authHeaders, (err, response, body) => {
+    request.get(`${baseUri}/browse/categories/${req.params.id}/playlists?country=us&limit=20`, authHeaders, (err, response, body) => {
         if(!err && response.statusCode === 200) {
             res.json(body);
         } else {
