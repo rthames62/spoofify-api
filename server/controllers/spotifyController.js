@@ -167,6 +167,16 @@ const getBrowseCategories = (req, res) => {
     })
 }
 
+const getBrowseCategoryById = (req, res) => {
+    request.get(`${baseUri}/browse/categories/${req.params.id}/playlists`, authHeaders, (err, response, body) => {
+        if(!err && response.statusCode === 200) {
+            res.json(body);
+        } else {
+            res.json(response, body, err);
+        }
+    })
+}
+
 const getBrowseFeaturedPlaylists = (req, res) => {
     request.get(`${baseUri}/browse/featured-playlists`, authHeaders, (err, response, body) => {
         if(!err && response.statusCode === 200) {
@@ -204,5 +214,6 @@ module.exports = {
     searchSpotify: searchSpotify,
     getBrowseCategories: getBrowseCategories,
     getBrowseFeaturedPlaylists: getBrowseFeaturedPlaylists,
-    getBrowseNewReleases: getBrowseNewReleases
+    getBrowseNewReleases: getBrowseNewReleases,
+    getBrowseCategoryById: getBrowseCategoryById
 }
