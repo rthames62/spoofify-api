@@ -169,12 +169,19 @@ const getBrowseCategories = (req, res) => {
 
 const getBrowseCategoryById = (req, res) => {
     request.get(`${baseUri}/browse/categories/${req.params.id}/playlists?country=us&limit=20`, authHeaders, (err, response, body) => {
-        console.log(response.statusCode, err);
         if(!err && response.statusCode === 200) {
-            console.log('success', body);
             res.json(body);
         } else {
-            console.log('arghh')
+            res.json(response, body, err);
+        }
+    })
+}
+
+const getSingleCategoryById = (req, res) => {
+    request.get(`${baseUri}/browse/categories/${req.params.id}`, authHeaders, (err, response, body) => {
+        if(!err && response.statusCode === 200) {
+            res.json(body);
+        } else {
             res.json(response, body, err);
         }
     })
@@ -218,5 +225,6 @@ module.exports = {
     getBrowseCategories: getBrowseCategories,
     getBrowseFeaturedPlaylists: getBrowseFeaturedPlaylists,
     getBrowseNewReleases: getBrowseNewReleases,
-    getBrowseCategoryById: getBrowseCategoryById
+    getBrowseCategoryById: getBrowseCategoryById,
+    getSingleCategoryById: getSingleCategoryById
 }

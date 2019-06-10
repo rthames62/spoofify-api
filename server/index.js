@@ -11,7 +11,8 @@ spotifyController.authorizeSpotify();
 
 app.get('/api/spotify/categories', spotifyController.getCategories);
 app.get('/api/spotify/browse/categories', spotifyController.getBrowseCategories);
-app.get('/api/spotify/browse/category/:id', spotifyController.getBrowseCategoryById);
+app.get('/api/spotify/browse/category/:id/playlists', spotifyController.getBrowseCategoryById);
+app.get('/api/spotify/browse/category/:id', spotifyController.getSingleCategoryById);
 app.get('/api/spotify/browse/featured-playlists', spotifyController.getBrowseFeaturedPlaylists);
 app.get('/api/spotify/browse/new-releases', spotifyController.getBrowseFeaturedPlaylists);
 app.get('/api/spotify/featured-playlists', spotifyController.getFeaturedPlaylists);
